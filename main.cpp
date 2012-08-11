@@ -12,7 +12,6 @@
 int main(int argc, char** argv)
 {
 	char opt1;
-	int opt2=0;
 	bool end=false, repair = false;
 	char* tah = new char [100];
 	board G_dama;
@@ -65,7 +64,6 @@ int main(int argc, char** argv)
 			switch (s[0])
 			{
 			case'm':
-				int act;
 				while(it1!=s.end())
 				{
 					if(*it1==';')
