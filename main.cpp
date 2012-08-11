@@ -1,5 +1,5 @@
-#include <cstdlib>
 #include "dama.h"
+#include <cstdlib>
 /* 
  * File:   main.cpp
  * Author: Dixiw
@@ -13,11 +13,11 @@ int main(int argc, char** argv)
 {
 	char opt1;
 	int opt2=0;
-	bool end=false;
-	char* tah;
+	bool end=false, repair = false;
+	char* tah = new char [100];
 	board G_dama;
     std::cout<<"Welcome to program DAMA \n\n";
-	while((opt1!='s')||(opt1!='m')||(opt1!='l'))
+	while(repair==false)
 	{
 		std::cout<<"Choose game type: \n";
 		std::cout<<"(type s for small [4 pieces])\n";
@@ -36,8 +36,10 @@ int main(int argc, char** argv)
 			G_dama.board_start(large);
 			break;
 		default:
-			std::cout<<"Type correct option newt time please.";
+			std::cout<<"Type correct option next time please.";
 		}
+		if((opt1=='s')||(opt1=='m')||(opt1=='l')) repair = true;
+		else repair = false;
 	}
 	std::cout<<"Lets the game begin.\n";
 	while(end!= true)
@@ -46,9 +48,17 @@ int main(int argc, char** argv)
 		C_type col;
 		for(i=0;i<2;i++)
 		{
-			if(i==0) col = white;
-			else col = black;
-			std::cout<< col <<" on move:\n";
+			G_dama.drawboard();
+			if(i==0)
+			{
+				col = white;
+				std::cout<< "White on move:\n";
+			}
+			else
+			{
+				col = black;
+				std::cout<<"Black on move:\n";
+			}			
 			std::cin>> tah;
 			std::string s(tah);
 			std::string::iterator it1= s.begin();
@@ -61,10 +71,11 @@ int main(int argc, char** argv)
 					if(*it1==';')
 					{
 						pos from, to;
-						from.pos_x = toupper(*it1++) - 'A';
-						from.pos_y = *(it1++) -1;it1++;
-						to.pos_x = toupper(*it1++) - 'A';
-						to.pos_y = *(it1++) -1;it1++;
+						it1++;
+						from.pos_x = toupper(*it1) - 'A'; it1++;
+						from.pos_y = *it1 -'1';it1++;it1++;
+						to.pos_x = toupper(*it1) - 'A'; it1++;
+						to.pos_y = *it1 -'1';it1++;
 						if((from.pos_x<0)||(from.pos_x>7)) return -1;
 						if((from.pos_y<0)||(from.pos_y>7)) return -1;
 						if((to.pos_x<0)||(to.pos_x>7)) return -1;

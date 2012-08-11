@@ -165,18 +165,19 @@ void board::p_place(pos where, C_type col, P_type typ)
 
 void board::drawboard()
 {
-    std::cout<< Etl << Elr << Elr << Elr << Elr << Elr << Elr << Elr << Elr << Etr <<" \n";
+    std::cout<<" " << Etl << Elr << Elr << Elr << Elr << Elr << Elr << Elr << Elr << Etr <<" \n";
     int i,j;
     for(i=0;i<8;i++)
         {
-        std::cout<< Etb; 
+        std::cout<< i+1 << Etb; 
             for(j=0;j<8;j++)
             {
                 std::cout<< desk[8*i + j];
             }
         std::cout<< Etb << "\n";
         }
-   std::cout<< Ebl << Elr << Elr << Elr << Elr << Elr << Elr << Elr << Elr << Ebr <<std::endl;
+   std::cout<<" " << Ebl << Elr << Elr << Elr << Elr << Elr << Elr << Elr << Elr << Ebr <<"\n";
+   std::cout<< "  ABCDEFGH"<<std::endl;
 };
 
 int board::p_move(step from_to, C_type colour)
