@@ -1,5 +1,5 @@
 #include "dama.h"
-#include <cstdlib>
+
 /* 
  * File:   main.cpp
  * Author: Dixiw
@@ -81,7 +81,7 @@ int main(int argc, char** argv)
 						if((to.pos_x<0)||(to.pos_x>7)) return -1;
 						if((to.pos_y<0)||(to.pos_y>7)) return -1;
 						step from_to ={from,to};
-						G_dama.p_move(from_to,col);
+						std::cout<< "\n" << G_dama.p_move(from_to,col) <<"\n";
 					}
 					else it1++;
 				}
@@ -90,14 +90,13 @@ int main(int argc, char** argv)
 				pos place;
 				place.pos_x = toupper(s[2]) - 'A';
 				place.pos_y = s[3] - 1;
-				G_dama.transform(place,col);
+				std::cout<< "\n" <<G_dama.transform(place,col) <<"\n";
 				break;
 			default:
 				std::cout<<"Ilegal action - Game over"<< std::endl;
 				break;
 			}
 		}
-		G_dama.drawboard();
 	}
 	system("pause");
     return 0;
