@@ -305,7 +305,9 @@ int board::transform(pos place,C_type colour)
 		}
 	}
 	else return -5; //tuto figuru uz nelze menit
-
+	
+	return 0;//predpokladam
+	
 }
 
 #endif	/* DAMA_H */
