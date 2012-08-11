@@ -1,5 +1,5 @@
-#include "dama.h"
 #include <cstdlib>
+#include "dama.h"
 /* 
  * File:   main.cpp
  * Author: Dixiw
@@ -15,7 +15,7 @@ int main(int argc, char** argv)
 	int opt2=0;
 	bool end=false;
 	char* tah;
-	board G_dama();
+	board G_dama;
     std::cout<<"Welcome to program DAMA \n\n";
 	while((opt1!='s')||(opt1!='m')||(opt1!='l'))
 	{
