@@ -187,7 +187,7 @@ int board::p_move(step from_to, C_type colour)
 	int tX =from_to.to.pos_x,tY =from_to.to.pos_y;
 	int abs_X = tX-fX, abs_Y = tY-fY;
 	if(abs_X<0) abs_X = -abs_X; if(abs_Y<0) abs_Y = -abs_Y;
-	int from = 8*fX + fY, to = 8*tX + tY;
+	int from = fX + 8*fY, to = tX + 8*tY;
 	if( (fX > 7)||(fX < 0)||(fY > 7 )||(fY < 0) ) return -1; //je to mimo hraci pole
 	if( (tX > 7)||(tX < 0)||(tY > 7 )||(tY < 0) ) return -1; //je to mimo hraci pole
 	if((fX+fY)%2 != 0 ) return -2; //neni to na cernych
@@ -205,7 +205,7 @@ int board::p_move(step from_to, C_type colour)
 			}
 			else if(abs_X == 2) // pokud je to sebrani jen jedne
 			{
-				int tmp = 4*(tX+fX)+(tY+fY); 
+				int tmp = (tX+fX)/2+4*(tY+fY); 
 				if ((from == Pbp)&&(colour == black)) // jedna se o cerneho pesce
 				{
 					if ((desk[tmp] != Pwp)&&(desk[tmp] != Pwq)) return -4; //nejde sebrat vlastni figurku
@@ -245,14 +245,14 @@ int board::p_move(step from_to, C_type colour)
 			{
 				for(i=1;i<diag;i++)
 				{
-					int akt = 8*(fX+i) + (fY+i);
+					int akt = (fX+i) + 8*(fY+i);
 					if((desk[akt] == Pbp)||(desk[akt] == Pbq)) return -8;// nejde sebrat damou vlastni figuru
 					if((desk[akt] == Pwp)||(desk[akt] == Pwq)) pcnt++;					
 				}
 				if(pcnt>1) return -9; //nejde sebrat vic figur najednou
 				for(i=1;i<diag;i++)
 				{
-					int akt = 8*(fX+i) + (fY+i);
+					int akt = (fX+i) + 8*(fY+i);
 					desk[akt] = Bb;
 				}
 				w_pcs_cnt --;
@@ -261,14 +261,14 @@ int board::p_move(step from_to, C_type colour)
 			{
 				for(i=1;i<diag;i++)
 				{
-					int akt = 8*(fX+i) + (fY+i);
+					int akt = (fX+i) + 8*(fY+i);
 					if((desk[akt] == Pwp)||(desk[akt] == Pwq)) return -8;// nejde sebrat damou vlastni figuru
 					if((desk[akt] == Pbp)||(desk[akt] == Pbq)) pcnt++;					
 				}
 				if(pcnt>1) return -9; //nejde sebrat vic figur najednou
 				for(i=1;i<diag;i++)
 				{
-					int akt = 8*(fX+i) + (fY+i);
+					int akt = (fX+i) + 8*(fY+i);
 					desk[akt] = Bb;
 				}
 				b_pcs_cnt --;
