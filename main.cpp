@@ -1,5 +1,4 @@
 #include "dama.h"
-#include <cstdlib>
 /* 
  * File:   main.cpp
  * Author: Dixiw

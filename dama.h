@@ -1,4 +1,4 @@
-﻿/* 
+/* 
  * File:   dama.h
  * Author: Dixiw
  *
@@ -8,6 +8,7 @@
 #ifndef DAMA_H
 #define	DAMA_H
 
+#include <cstdlib>
 #include <iostream>
 #include <cstring>
 
