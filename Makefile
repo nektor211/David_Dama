@@ -1,2 +1,2 @@
 all:
-	g++ main.cpp -o dama.exe
+	g++ main.cpp -Wall -o dama.exe
